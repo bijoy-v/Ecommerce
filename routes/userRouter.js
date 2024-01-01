@@ -10,4 +10,6 @@ userRouter.get('/about', function(req, res, next) {
   res.render("user/about",{title:"about",layout:"layouts/sidebar"})
 });
 
+
+
 module.exports = userRouter;

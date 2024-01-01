@@ -4,7 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const expresslayouts = require('express-ejs-layouts')
-const userRouter = require('./routes/userRouter')
+const userRouter = require('./routes/userRouter');
+const adminRouter = require('./routes/adminRouter');
 
 const app = express();
 const port=2000;
@@ -17,16 +18,18 @@ app.set('view engine', 'ejs');
 app.use(expresslayouts);
 app.set('layout','./layouts/layout.ejs')
 
-
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use("/css",express.static(path.join(__dirname, '/public/stylesheets')));
+app.use("/img",express.static(path.join(__dirname, '/public/images')));
+
 
 //routes
 app.use('/', userRouter);
+app.use('/admin',adminRouter)
 
 
 // catch 404 and forward to error handler
