@@ -26,3 +26,9 @@ a {
   width: 10px;
   height: 8px;
 }
+.adbtn{
+  float: right;
+  margin-right: 80px;
+  margin-top: -15px;
+  padding-bottom: 15px;
+}

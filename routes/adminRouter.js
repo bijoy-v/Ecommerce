@@ -1,40 +1,23 @@
 const express = require('express');
-const { addProduct } = require('../controllers/productController');
+const { addProduct, productAdd } = require('../controllers/productController');
+const { adminpage, adminProduct, adminUsers, adminProfile, adminOrders } = require('../controllers/adminController');
 const adminRouter = express.Router();
 
 /* GET users listing. */
 
-adminRouter.get('/', function(req, res, next) {
-  res.render("admin/dashboard",{title:"Admin Here", layout:"layouts/admin-layout.ejs"})
-});
+adminRouter.get('/', adminpage);
 
-adminRouter.get('/products', function(req, res, next) {
-  try{
-  res.render("admin/adminProducts",{title:"Admin Here", layout:"layouts/admin-layout.ejs"})
-  }catch (error){
-    console.log(error);
-  }
-});
-adminRouter.get('/products/add', function(req, res, next) {
-  try{
-  res.render("admin/addProduct",{title:"Admin Here", layout:"layouts/admin-layout.ejs"})
-  }catch (error){
-    console.log(error);
-  }
-});
-adminRouter.get('/users', function(req, res, next) {
-  res.render("admin/admin-users",{title:"Admin Here", layout:"layouts/admin-layout.ejs"})
-});
+adminRouter.get('/products',adminProduct );
 
-adminRouter.get('/profile', function(req, res, next) {
-  res.render("admin/adminProfile",{title:"Admin Here", layout:"layouts/admin-layout.ejs"})
-});
+adminRouter.get('/products/add', productAdd);
+adminRouter.get('/users', adminUsers);
 
-adminRouter.get('/orders', function(req, res, next) {
-  res.render("admin/adminOrder",{title:"Admin Here", layout:"layouts/admin-layout.ejs"})
-});
+adminRouter.get('/profile', adminProfile);
+
+adminRouter.get('/orders', adminOrders);
 
 adminRouter.post('/add-product', addProduct);
+
 
 
 
