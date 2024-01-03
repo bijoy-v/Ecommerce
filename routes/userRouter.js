@@ -1,10 +1,9 @@
 const express = require('express');
+const { homepage } = require('../controllers/userController');
 const userRouter = express.Router();
 
 /* GET users listing. */
-userRouter.get('/', function(req, res, next) {
-  res.render("user/index",{title:"welcome"})
-});
+userRouter.get('/', homepage);
 
 userRouter.get('/about', function(req, res, next) {
   res.render("user/about",{title:"about",layout:"layouts/sidebar"})

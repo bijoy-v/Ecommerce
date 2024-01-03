@@ -1,0 +1,49 @@
+<h1>add product</h1>
+<form action="/admin/add-product" method="post">
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationServer01">Product name</label>
+        <input type="text" name="productName" class="form-control is-valid" id="validationServer01" placeholder="Iphone 13 pro max" required/>
+        <div class="valid-feedback">
+          <!-- Looks good! -->
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationServer02"> Price</label>
+        <div class="input-group">
+
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupPrepend3">&#8377;</span>
+        </div>
+        <input type="number" name="price" class="form-control is-valid" id="validationServer02" placeholder="59999" required/>
+        <div class="valid-feedback">
+          <!-- Looks good! -->
+        </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationServerUsername">Color</label>
+          <input type="text" name="color" class="form-control is-invalid" id="validationServerUsername" placeholder="Black" aria-describedby="inputGroupPrepend3" required>
+          <div class="invalid-feedback">
+            <!-- Please choose a username. -->
+          </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationServer03">RAM</label>
+        <input type="text"  name="ram" class="form-control is-invalid" id="validationServer03" placeholder="4GB 6GB 8GB 12GB" required>
+        <div class="invalid-feedback">
+          <!-- Please provide a valid city. -->
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationServer04">Storage</label>
+        <input type="text" name="storage" class="form-control is-invalid" id="validationServer04" placeholder="64GB 128GB 256GB" required>
+        <div class="invalid-feedback">
+          <!-- Please provide a valid state. -->
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </form>

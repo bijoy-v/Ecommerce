@@ -1,4 +1,5 @@
 const express = require('express');
+const { addProduct } = require('../controllers/productController');
 const adminRouter = express.Router();
 
 /* GET users listing. */
@@ -14,6 +15,13 @@ adminRouter.get('/products', function(req, res, next) {
     console.log(error);
   }
 });
+adminRouter.get('/products/add', function(req, res, next) {
+  try{
+  res.render("admin/addProduct",{title:"Admin Here", layout:"layouts/admin-layout.ejs"})
+  }catch (error){
+    console.log(error);
+  }
+});
 adminRouter.get('/users', function(req, res, next) {
   res.render("admin/admin-users",{title:"Admin Here", layout:"layouts/admin-layout.ejs"})
 });
@@ -25,6 +33,8 @@ adminRouter.get('/profile', function(req, res, next) {
 adminRouter.get('/orders', function(req, res, next) {
   res.render("admin/adminOrder",{title:"Admin Here", layout:"layouts/admin-layout.ejs"})
 });
+
+adminRouter.post('/add-product', addProduct);
 
 
 
