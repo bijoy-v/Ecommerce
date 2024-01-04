@@ -11,114 +11,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td><img width="50px" height="50px" src="/img/14promax.jpg" alt=""></td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>
-          <a class="btn btn-primary" href="" role="button">Edit</a>
-          <a class="btn btn-primary" href="" role="button">Delete</a>
-
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td><img width="50px" height="50px" src="/img/15promax.jpg" alt=""></td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>
-          <a class="btn btn-primary" href="" role="button">Edit</a>
-          <a class="btn btn-primary" href="" role="button">Delete</a></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td><img width="50px" height="50px" src="/img/iqoo12.jpg" alt=""></td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>
-          <a class="btn btn-primary" href="" role="button">Edit</a>
-          <a class="btn btn-primary" href="" role="button">Delete</a></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td><img width="50px" height="50px" src="/img/images.jpg" alt=""></td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>
-          <a class="btn btn-primary" href="" role="button">Edit</a>
-          <a class="btn btn-primary" href="" role="button">Delete</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td><img width="50px" height="50px" src="/img/macbookpro.jpg" alt=""></td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>
-          <a class="btn btn-primary" href="" role="button">Edit</a>
-          <a class="btn btn-primary" href="" role="button">Delete</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td><img width="50px" height="50px" src="/img/iqoo12.jpg" alt=""></td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>
-          <a class="btn btn-primary" href="" role="button">Edit</a>
-          <a class="btn btn-primary" href="" role="button">Delete</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td><img width="50px" height="50px" src="/img/iqoo12.jpg" alt=""></td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>
-          <a class="btn btn-primary" href="" role="button">Edit</a>
-          <a class="btn btn-primary" href="" role="button">Delete</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td><img width="50px" height="50px" src="/img/iqoo12.jpg" alt=""></td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>
-          <a class="btn btn-primary" href="" role="button">Edit</a>
-          <a class="btn btn-primary" href="" role="button">Delete</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td><img width="50px" height="50px" src="/img/iqoo12.jpg" alt=""></td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>
-          <a class="btn btn-primary" href="" role="button">Edit</a>
-          <a class="btn btn-primary" href="" role="button">Delete</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td><img width="50px" height="50px" src="/img/iqoo12.jpg" alt=""></td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>
-          <a class="btn btn-primary" href="" role="button">Edit</a>
-          <a class="btn btn-primary" href="" role="button">Delete</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td><img width="50px" height="50px" src="/img/iqoo12.jpg" alt=""></td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>
-          <a class="btn btn-primary" href="#" role="button">Edit</a>
-          <a class="btn btn-primary" href="#" role="button">Delete</a></td>
-      </tr>
-
+      <% products.forEach((product,index)=>{ %>
+        <tr>
+          <th scope="row"><%= index+1 %> </th>
+          <td><img width="50px" height="50px" src="/img/14promax.jpg" alt=""></td>
+          <td><%= product.name %> </td>
+          <td><%= product.price %></td>
+          <td>
+            <a class="btn btn-primary" href="" role="button">Edit</a>
+            <a class="btn btn-primary" href="" role="button">Delete</a>
+          </td>
+        </tr>
+      <% })  %>
     </tbody>
   </table>

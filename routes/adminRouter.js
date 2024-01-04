@@ -1,5 +1,5 @@
 const express = require('express');
-const { addProduct, productAdd } = require('../controllers/productController');
+const { addProduct, addProductPage } = require('../controllers/productController');
 const { adminpage, adminProduct, adminUsers, adminProfile, adminOrders } = require('../controllers/adminController');
 const adminRouter = express.Router();
 
@@ -9,7 +9,7 @@ adminRouter.get('/', adminpage);
 
 adminRouter.get('/products',adminProduct );
 
-adminRouter.get('/products/add', productAdd);
+adminRouter.get('/products/add', addProductPage);
 adminRouter.get('/users', adminUsers);
 
 adminRouter.get('/profile', adminProfile);

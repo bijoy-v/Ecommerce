@@ -1,37 +1,18 @@
 <h3>MOBILES</h3>
 <div class="row justify-content-evenly">
-    <div class="col-md-3 sm-6 card" style="width: 18rem;">
-        <img class="card-img-top" src="img/15promax.jpg" alt="Card image cap">
-        <div class="card-body">
-            <p class="card-text">Iphone 15 pro Max</p>
-            <del>&#8377;129999</del>
-            <h4>&#8377;125000</h4>
+
+    <% products.forEach((product)=>{ %>
+        <div class="col-md-3 sm-6 card" style="width: 18rem;">
+            <img class="card-img-top" src="img/15promax.jpg" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text"><%= product.name %></p>
+                <del>&#8377;129999</del>
+                <h4>&#8377;<%= product.price %></h4>
+            </div>
         </div>
-    </div>
-    <div class="col-md-3 sm-6card" style="width: 18rem;">
-        <img class="card-img-top" src="img/14promax.jpg" alt="Card image cap">
-        <div class="card-body">
-            <p class="card-text">Iphone 14 pro Max</p>
-            <del>&#8377;159999</del>
-            <h4>&#8377;135000</h4>
-        </div>
-    </div>
-    <div class="col-md-3 sm-6 card" style="width: 18rem;">
-        <img class="card-img-top" src="img/images.jpg" alt="Card image cap">
-        <div class="card-body">
-            <p class="card-text">Iphone 13</p>
-            <del>&#8377;65000</del>
-            <h4>&#8377;53000</h4>
-        </div>
-    </div>
-    <div class="col-md-3 sm-6 card" style="width: 18rem;">
-        <img class="card-img-top" src="/img/iqoo12.jpg" alt="Card image cap">
-        <div class="card-body">
-            <p class="card-text">Iqoo 12</p>
-            <del>&#8377;68000</del>
-            <h4>&#8377;54000</h4>
-        </div>
-    </div>
+    
+
+    <% }) %>
 </div>
 <h2>Laptops</h2>
 <div class="row justify-content-evently">
