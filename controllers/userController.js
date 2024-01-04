@@ -39,7 +39,14 @@ const wishlistpage =(req, res, next)=> {
     
   }
 }
+const loginPage =(req, res, next)=> {
+  try {
+  res.render("user/loginPage",{title:"Login",})
+  } catch (error) {
+    console.log(error); 
+  }
+}
 module.exports = {
-    homepage,about,productsPage,cartpage,wishlistpage
+    homepage,about,productsPage,cartpage,wishlistpage,loginPage
 
 }

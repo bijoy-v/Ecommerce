@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  email: {
+  name: {
     type: String,
     required: true,
     unique: true,
   },
-  name: {
+  email: {
     type: String,
     required: true,
   },
@@ -14,9 +14,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  profile:{
-    type:String,
-  }
+  // profile:{
+  //   type:String,
+  // }
 });
 
 const User = mongoose.model('User', userSchema);

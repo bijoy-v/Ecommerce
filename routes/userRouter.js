@@ -1,8 +1,10 @@
 const express = require('express');
-const { homepage, about, cartpage, wishlistpage, productsPage } = require('../controllers/userController');
+const { homepage, about, cartpage, wishlistpage, productsPage, loginPage} = require('../controllers/userController');
 const userRouter = express.Router();
 
 /* GET users listing. */
+userRouter.get('/login',loginPage)
+
 userRouter.get('/', homepage);
 
 userRouter.get('/about', about);

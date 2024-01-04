@@ -3,18 +3,20 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">name</th>
-        <th scope="col">status</th>
+        <th scope="col">MailId</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
+      <% user.forEach((user,index))=>{ %>
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Active</td>
+        <th scope="row"><%= index+1 %></th>
+        <td><% user.name %></td>
+        <td><% user.email %></td>
         <td><button type="button" class="btn btn-tertiary" data-mdb-ripple-init data-mdb-ripple-color="light">Block</button></td>
       </tr>
-      <tr>
+    <% }) %>     
+    <tr>
         <th scope="row">2</th>
         <td>Bijoy</td>
         <td>Active</td>
