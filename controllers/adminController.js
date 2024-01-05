@@ -1,4 +1,5 @@
-const Product = require("../models/productModel");
+const CatagoryModel = require("../models/catagoryModel");
+const ProductModel = require("../models/productModel");
 
 const adminpage = (req, res, next)=> {
   try {
@@ -9,7 +10,7 @@ const adminpage = (req, res, next)=> {
   };
   const adminProduct = async (req, res, next) =>{
     try{
-       const products = await Product.find({});
+       const products = await ProductModel.find({});
     res.render("admin/adminProducts",{title:"Admin Here", layout:"layouts/admin-layout.ejs",products})
     }catch (error){
       console.log(error);
@@ -41,12 +42,31 @@ const adminpage = (req, res, next)=> {
     }
   };
 
+  const catagoryPage =async (req, res, next)=> {
+    try {
+      const catagories = await CatagoryModel.find({})
+      res.render("admin/catagoryPage",{title:"Admin Here", layout:"layouts/admin-layout.ejs",catagories})
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  const addCatagory = async (req,res,next)=>{
+    try {
+      console.log(req.body.catagory);
+      const newCatagory = await CatagoryModel.create({
+        name:req.body.catagory
+      })
+      res.json(newCatagory)
+    } catch (error) {
+      
+    }
+  }
 
 
 
 
 
   module.exports = {
-    adminpage,adminProduct,adminUsers,adminProfile,adminOrders
+    adminpage,adminProduct,adminUsers,adminProfile,adminOrders,catagoryPage,addCatagory
   }

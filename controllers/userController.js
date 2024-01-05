@@ -1,4 +1,4 @@
-const Product = require("../models/productModel");
+const ProductModel = require("../models/productModel");
 
 const homepage =  (req, res, next) => {
   try {
@@ -16,7 +16,7 @@ const about = (req, res, next)=> {
 };
  const productsPage = async(req, res, next)=> {
   try {
-    const products = await Product.find({});
+    const products = await ProductModel.find({});
   res.render("user/userProducts",{title:"about",products})
   } catch (error) {
     console.log(error);

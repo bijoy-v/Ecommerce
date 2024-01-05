@@ -1,10 +1,10 @@
-const Product = require("../models/productModel");
+const ProductModel = require("../models/productModel");
 
 const addProduct =  async function(req, res, next) {
     try {
       console.log(req.body);
       //database
-      const newProduct=await Product.create({
+      const newProduct=await ProductModel.create({
         name:req.body.productName,
         price:req.body.price,
         color:req.body.color,
@@ -20,7 +20,8 @@ const addProduct =  async function(req, res, next) {
 
   const addProductPage =(req, res, next) =>{
     try{
-    res.render("admin/addProduct",{title:"Admin Here", layout:"layouts/admin-layout.ejs"})
+
+    res.render("admin/addProduct",{title:"Admin Here", layout:"layouts/admin-layout.ejs",})
     }catch (error){
       console.log(error);
     }

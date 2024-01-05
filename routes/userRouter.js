@@ -3,7 +3,7 @@ const { homepage, about, cartpage, wishlistpage, productsPage, loginPage} = requ
 const userRouter = express.Router();
 
 /* GET users listing. */
-userRouter.get('/login',loginPage)
+// userRouter.get('/login',loginPage)
 
 userRouter.get('/', homepage);
 
