@@ -7,11 +7,12 @@
             </tr>
         </thead>
         <tbody>
-            <%  %>
+            <%catagories.forEach((item,index)=>{ %>
             <tr>
-                <th scope="row">1</th>
-                <td>Mobiles</td>
+                <th scope="row"><%=index+1%> </th>
+                <td><%=item %></td>
             </tr>
+            <% })  %>
         </tbody>
     </table>
     <form action="/admin/add-catagory" method="post">
