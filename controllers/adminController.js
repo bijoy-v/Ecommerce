@@ -57,7 +57,7 @@ const adminpage = (req, res, next)=> {
       const newCatagory = await CatagoryModel.create({
         name:req.body.catagory
       })
-      res.json(newCatagory)
+      res.json("category added")
     } catch (error) {
       
     }
