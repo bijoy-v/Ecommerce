@@ -11,7 +11,7 @@ const addProduct =  async function(req, res, next) {
         description:req.body.description,
       })
       console.log("product",newProduct);
-      res.json(newProduct);
+      res.json("product added");
     } catch (error) {
       console.log(error);
     }

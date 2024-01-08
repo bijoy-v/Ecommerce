@@ -46,7 +46,17 @@ const loginPage =(req, res, next)=> {
     console.log(error); 
   }
 }
+
+const registerPage =(req, res, next)=> {
+  try {
+  res.render("user/register",{title:"Login",})
+  } catch (error) {
+    console.log(error); 
+  }
+}
+
+
 module.exports = {
-    homepage,about,productsPage,cartpage,wishlistpage,loginPage
+    homepage,about,productsPage,cartpage,wishlistpage,loginPage,registerPage
 
 }

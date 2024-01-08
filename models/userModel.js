@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   // profile:{
-  //   type:String,
+  //   type:String,n
   // }
 });
 
