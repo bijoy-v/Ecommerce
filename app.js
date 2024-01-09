@@ -35,6 +35,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/css", express.static(path.join(__dirname, "/public/stylesheets")));
 app.use("/img", express.static(path.join(__dirname, "/public/images")));
+app.use("/js", express.static(path.join(__dirname, "/public/javascripts")));
+
 
 //routes
 app.use("/", userRouter);

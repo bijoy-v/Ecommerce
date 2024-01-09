@@ -1,5 +1,5 @@
 <div class="row">
-    <table class="table col-6">
+    <table class="table col-md-6">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -10,7 +10,7 @@
             <%catagories.forEach((item,index)=>{ %>
             <tr>
                 <th scope="row"><%=index+1%> </th>
-                <td id="in"><%=item %></td>
+                <td id="in"><%=item.name %></td>
             </tr>
             <% })  %>
         </tbody>

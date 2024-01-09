@@ -17,11 +17,12 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    images:[String]
-    // catagory:{
-    //     type:String,
-    //     required:true
-    // }
+    images:[String],
+    category:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"catagory",
+        required:true,
+    }
 })
 
 const ProductModel = mongoose.model('Product', productSchema);

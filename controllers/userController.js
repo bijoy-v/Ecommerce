@@ -23,22 +23,7 @@ const about = (req, res, next)=> {
   }
 };
 
-const cartpage =(req, res, next)=> {
-  try {
-  res.render("user/userCart",{title:"about",})
-  } catch (error) {
-    console.log(error);
-  }
-}
 
-const wishlistpage =(req, res, next)=> {
-  try {
-  res.render("user/userWishlist",{title:"about",layout:"layouts/layout"})
-  } catch (error) {
-    console.log(error);
-    
-  }
-}
 const loginPage =(req, res, next)=> {
   try {
   res.render("user/loginPage",{title:"Login",})
@@ -57,6 +42,6 @@ const registerPage =(req, res, next)=> {
 
 
 module.exports = {
-    homepage,about,productsPage,cartpage,wishlistpage,loginPage,registerPage
+    homepage,about,productsPage,loginPage,registerPage
 
 }

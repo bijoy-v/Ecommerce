@@ -1,60 +1,66 @@
 <h1>add product</h1>
 
 <form action="/admin/add-product" method="post" enctype="multipart/form-data">
-    <div class="form-row">
-      <div class="col-md-4 mb-3">
-        <label for="validationServer01">Product name</label>
-        <input type="text" name="productName" class="form-control is-valid" id="validationServer01" placeholder="Iphone 13 pro max" required/>
-        <div class="valid-feedback">
-          <!-- Looks good! -->
-        </div>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationServer01">Product name</label>
+      <input type="text" name="productName" class="form-control is-valid"
+        id="validationServer01" placeholder="Iphone 13 pro max" required />
+      <div class="valid-feedback">
+        <!-- Looks good! -->
       </div>
-      <div class="col-md-4 mb-3">
-        <label for="validationServer02"> Price</label>
-        <div class="input-group">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationServer02"> Price</label>
+      <div class="input-group">
 
         <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupPrepend3">&#8377;</span>
+          <span class="input-group-text" id="inputGroupPrepend3">&#8377;</span>
         </div>
-        <input type="number" name="price" class="form-control is-valid" id="validationServer02" placeholder="59999" required/>
+        <input type="number" name="price" class="form-control is-valid"
+          id="validationServer02" placeholder="59999" required />
         <div class="valid-feedback">
           <!-- Looks good! -->
         </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="validationServerUsername">Color</label>
-          <input type="text" name="color" class="form-control is-invalid" id="validationServerUsername" placeholder="Black" aria-describedby="inputGroupPrepend3" required>
-          <div class="invalid-feedback">
-            <!-- Please choose a username. -->
-          </div>
       </div>
     </div>
-    <div class="form-row">
-      <div class="col-md-6 mb-3">
-        <label for="validationServer03">Description</label>
-        <textarea type="text"  name="description" class="form-control is-invalid" id="validationServer03" placeholder="Features..." required></textarea>
-        <div class="invalid-feedback">
-        </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationServerUsername">Color</label>
+      <input type="text" name="color" class="form-control is-invalid"
+        id="validationServerUsername" placeholder="Black"
+        aria-describedby="inputGroupPrepend3" required>
+      <div class="invalid-feedback">
+        <!-- Please choose a username. -->
       </div>
     </div>
-    <div class="form-row">
-      <div class="col-md-6 mb-3">
-        <label for="validationServer03">Description</label>
-        <input type="file"  name="images" multiple />
-        <div class="invalid-feedback">
-        </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationServer03">Description</label>
+      <textarea type="text" name="description" class="form-control is-invalid"
+        id="validationServer03" placeholder="Features..." required></textarea>
+      <div class="invalid-feedback">
       </div>
     </div>
-    <%newCatagory.forEach((item)=>{%> 
-    <div class="select">
-    <select class="form-select" aria-label="Default select example">
-      <option selected>Catagory</option>
-      <option value="1">Moblie</option>
-      <option value="1" >  <%=item %> </option> 
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationServer03"></label>
+      <input  type="file"  id="imageInput"  name="images" multiple onchange="previewImage(event)" />
+      <img id="preview" src="#" alt="Image Preview" style="display:none; max-width: 300px; max-height: 300px;">
+      <div class="invalid-feedback">
+      </div>
+    </div>
+  </div>
+  <div class="select">
+    <select name="category" class="form-select" aria-label="Default select example">
+      <option value selected>Categories</option>
+      <%catagories.forEach((item)=>{%>
+      <option value="<%= item._id %>"><%=item.name %> </option>
+      <%})%>
     </select>
   </div>
-  <%})%>         
 
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </form>
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+
