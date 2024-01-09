@@ -9,6 +9,8 @@ const mongoose = require("mongoose");
 const expresslayouts = require("express-ejs-layouts");
 const userRouter = require("./routes/userRouter");
 const adminRouter = require("./routes/adminRouter");
+const loginRouter = require("./routes/loginRouter")
+const bcrypt = require("bcrypt")
 
 const app = express();
 
@@ -41,6 +43,7 @@ app.use("/js", express.static(path.join(__dirname, "/public/javascripts")));
 //routes
 app.use("/", userRouter);
 app.use("/admin", adminRouter);
+
 
 
 // catch 404 and forward to error handler

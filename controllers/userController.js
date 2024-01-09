@@ -24,14 +24,6 @@ const about = (req, res, next)=> {
 };
 
 
-const loginPage =(req, res, next)=> {
-  try {
-  res.render("user/loginPage",{title:"Login",})
-  } catch (error) {
-    console.log(error); 
-  }
-}
-
 const registerPage =(req, res, next)=> {
   try {
   res.render("user/register",{title:"Login",})
@@ -40,8 +32,17 @@ const registerPage =(req, res, next)=> {
   }
 }
 
+const loginPage =(req, res, next)=> {
+  try {
+  res.render("user/register",{title:"Login",})
+  } catch (error) {
+    console.log(error); 
+  }
+}
+
+
 
 module.exports = {
-    homepage,about,productsPage,loginPage,registerPage
+    homepage,about,productsPage,registerPage,loginPage
 
 }

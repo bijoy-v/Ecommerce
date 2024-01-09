@@ -1,6 +1,6 @@
 *{
   padding: 0;
-  margin: 0;
+  /* margin: 0; */
 }
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -37,4 +37,7 @@ a {
   margin-top: -60px;
   margin-right: 100px;
 
+}
+.signin{
+  margin-left:450px;
 }
