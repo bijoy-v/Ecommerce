@@ -51,3 +51,6 @@ function previewImage(event) {
         // Handle errors or display an error message to the user
       });
   }
+
+
+  

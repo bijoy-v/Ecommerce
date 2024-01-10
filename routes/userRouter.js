@@ -1,5 +1,5 @@
 const express = require('express');
-const { homepage, about, productsPage, registerPage, loginPage, register, login} = require('../controllers/userController');
+const { homepage, about, productsPage, registerPage, loginPage, register, login,  sessionData, userSession} = require('../controllers/userController');
 const { addCart, cartpage, wishlistpage } = require('../controllers/cartController');
 const userRouter = express.Router();
 
@@ -28,5 +28,11 @@ userRouter.get('/login',loginPage);
 
 userRouter.post('/signin', login)
 
+
+userRouter.get('/retrieveData',userSession)
+
+userRouter.get('/storeData',sessionData)
+  
+   
 
 module.exports = userRouter;

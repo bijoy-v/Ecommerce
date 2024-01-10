@@ -9,6 +9,8 @@ const mongoose = require("mongoose");
 const expresslayouts = require("express-ejs-layouts");
 const userRouter = require("./routes/userRouter");
 const adminRouter = require("./routes/adminRouter");
+const session = require('express-session');
+
 
 const app = express();
 
@@ -41,6 +43,19 @@ app.use("/js", express.static(path.join(__dirname, "/public/javascripts")));
 //routes
 app.use("/", userRouter);
 app.use("/admin", adminRouter);
+
+
+app.use(
+  session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+
+
+
 
 
 

@@ -1,6 +1,7 @@
 const ProductModel = require("../models/productModel");
 const UserModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const session = require('express-session');
 
 const homepage = (req, res, next) => {
   try {
@@ -73,12 +74,28 @@ const login = async (req,res)=>{
     if(!verified){
       throw ("wrong password")
     }
-res.json("Login Successfully")
-    
+res.json("Login successfully")   
   } catch (error) {
     console.log(error);
   }
 }
+
+const userSession = (req, res) => {
+  // Retrieve user data from session
+  const storedUsername = req.session.username;
+  const storedEmail = req.session.email;
+
+  res.send(`Username: ${storedUsername}, Email: ${storedEmail}`);
+};
+
+ const sessionData =(req, res) => {
+  // Store user data in session
+  req.session.username 
+  req.session.email 
+
+  res.send('User data stored in session');
+};
+
 
 
 module.exports = {
@@ -88,5 +105,7 @@ module.exports = {
   registerPage,
   loginPage,
   register,
-  login
+  login,
+  userSession,
+  sessionData
 };
