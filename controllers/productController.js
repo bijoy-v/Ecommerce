@@ -3,6 +3,7 @@ const ProductModel = require("../models/productModel");
 
 const addProduct =  async function(req, res, next) {
     try {
+
       console.log(req.body);
       //database
       const images = req.files?.map((obj) => (obj.filename))

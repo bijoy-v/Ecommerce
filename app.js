@@ -9,8 +9,6 @@ const mongoose = require("mongoose");
 const expresslayouts = require("express-ejs-layouts");
 const userRouter = require("./routes/userRouter");
 const adminRouter = require("./routes/adminRouter");
-const loginRouter = require("./routes/loginRouter")
-const bcrypt = require("bcrypt")
 
 const app = express();
 
