@@ -1,6 +1,7 @@
 const { error } = require("console");
 const CartModel = require("../models/cartModel");
 const ProductModel = require("../models/productModel");
+const WishlistModel = require("../models/wishlistModel");
 
 const cartpage =(req, res, next)=> {
     try {
@@ -19,19 +20,7 @@ const cartpage =(req, res, next)=> {
     }
   }
 
-  const wishlist = async(req,res,next)=>{
-    try {
-      const wishList = await WishlistModel.findById({
   
-        user:req.session.userId,
-        product:product._id
-      })
-  
-    } catch (error) {
-      console.log(error);
-      
-    }
-  }
   
 
 
@@ -60,7 +49,34 @@ try {
     
 }
 }
+const addWishlist = async(req,res,next)=>{
+  try {
+    const existWishList = await WishlistModel.findOne({
+    $and:[
+      {user:req.session.userId},
+        {product:req.params.productId}
+    ]
+  })
+    console.log(existWishList)
+     
+    if(existWishList){
+      throw Error("Already in wishlist")
+    }
+      const product =await ProductModel.findById(req.params.productId);
+      const wishlistItem = await WishlistModel.create({
+        user:req.session?.userId,
+        product:product._id,
+        totalPrice:product.price
+      })
+      console.log(wishlistItem);
+
+
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
 
 module.exports={
-    addCart,wishlistpage,cartpage
+    addCart,wishlistpage,cartpage,addWishlist
 }

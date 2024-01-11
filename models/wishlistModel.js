@@ -9,5 +9,5 @@ product:{
     type:mongoose.Schema.Types.ObjectId
 }
 })
- const WishlistModel = mongoose.model('catagory',wishlistSchema);
+ const WishlistModel = mongoose.model('wishlist',wishlistSchema);
  module.exports = WishlistModel

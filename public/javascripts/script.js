@@ -1,17 +1,17 @@
-function validation(){
-    const username = document.getElementById("form3Example1cg").innerHTML
+// function validation(){
+//     const username = document.getElementById("form3Example1cg").innerHTML
      
-    const passWord = document.getElementById("form3Example4cg")
+//     const passWord = document.getElementById("form3Example4cg")
 
 
-    // if(username.value ==""||passWord.value ==""){
+//     if(username.value ""||passWord.value ==""){
 
-    //     Enter the details.
+//         Enter the details.
 
-    // }else{
+//     }else{
         
-    // }
-}
+//     }
+// }
 
 function previewImage(event) {
     var input = event.target;
@@ -52,5 +52,30 @@ function previewImage(event) {
       });
   }
 
+  function addToWishlist(productId){
+    fetch("/add-wishlist/"+productId, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any other headers required by your API
+        },
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to add item to the wishlist');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Item added to the wishlist:', data);
+        // You can handle the response data or perform additional actions here
+      })
+      .catch(error => {
+        console.error('Error adding item to the wishlist:', error);
+        // Handle errors or display an error message to the user
+      });
+  }
 
+
+  
   

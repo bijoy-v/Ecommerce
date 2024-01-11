@@ -1,7 +1,7 @@
 <h3>MOBILES</h3>
 <div class="row justify-content-evenly">
 
-    <% products.forEach((product)=>{ %>
+    <% wishlist.forEach((product)=>{ %>
     <div class="col-md-3 sm-6 card" style="width: 18rem;">
         <img class="card-img-top" src="img/15promax.jpg" alt="Card image cap">
         <div class="card-body">
@@ -11,6 +11,9 @@
         </div>
         <button type="button" onclick="addToCart('<%=product._id%>')">+
             Cart</button>
+
+            <button type="button" onclick="addToWishlist('<%=product._id%>')">+
+                wishlist</button>
     </div>
     <% }) %>
 </div>
