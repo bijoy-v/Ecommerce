@@ -39,23 +39,19 @@ app.use("/css", express.static(path.join(__dirname, "/public/stylesheets")));
 app.use("/img", express.static(path.join(__dirname, "/public/images")));
 app.use("/js", express.static(path.join(__dirname, "/public/javascripts")));
 
-
-//routes
-app.use("/", userRouter);
-app.use("/admin", adminRouter);
-
-
+//session setup
 app.use(
   session({
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: true,
+    cookie:{maxAge:60*60*1000}
   })
 );
 
-
-
-
+//routes
+app.use("/", userRouter);
+app.use("/admin", adminRouter);
 
 
 

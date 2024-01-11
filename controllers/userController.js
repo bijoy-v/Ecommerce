@@ -2,6 +2,7 @@ const ProductModel = require("../models/productModel");
 const UserModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const session = require('express-session');
+const WishlistModel = require("../models/wishlistModel");
 
 const homepage = (req, res, next) => {
   try {
@@ -55,7 +56,12 @@ const register = async (req, res) => {
 
 const loginPage = (req, res, next) => {
   try {
-    res.render("user/loginPage", { title: "Login" });
+    console.log(req.session);
+    if(req.session.userLogin){
+      res.redirect("/")
+    }else{
+      res.render("user/loginPage", { title: "Login" });
+    }
   } catch (error) {
     console.log(error);
   }
@@ -74,27 +80,16 @@ const login = async (req,res)=>{
     if(!verified){
       throw ("wrong password")
     }
-res.json("Login successfully")   
+    console.log(user);
+    req.session.username=user?.name;
+    req.session.email=user?.email;
+    req.session.userId=user?._id;
+    req.session.userLogin=true;
+    res.redirect("/")
   } catch (error) {
     console.log(error);
   }
 }
-
-const userSession = (req, res) => {
-  // Retrieve user data from session
-  const storedUsername = req.session.username;
-  const storedEmail = req.session.email;
-
-  res.send(`Username: ${storedUsername}, Email: ${storedEmail}`);
-};
-
- const sessionData =(req, res) => {
-  // Store user data in session
-  req.session.username 
-  req.session.email 
-
-  res.send('User data stored in session');
-};
 
 
 
@@ -106,6 +101,5 @@ module.exports = {
   loginPage,
   register,
   login,
-  userSession,
-  sessionData
+ 
 };
