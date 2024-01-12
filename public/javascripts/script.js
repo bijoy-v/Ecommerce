@@ -43,7 +43,6 @@ function previewImage(event) {
         return response.json();
       })
       .then(data => {
-        console.log('Item added to the cart:', data);
         // You can handle the response data or perform additional actions here
       })
       .catch(error => {
@@ -76,6 +75,29 @@ function previewImage(event) {
       });
   }
 
+  function incQty(productId){
+    fetch("/incrementQty/"+productId, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any other headers required by your API
+        },
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('hthth');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('', data);
+        // You can handle the response data or perform additional actions here
+      })
+      .catch(error => {
+        console.error('', error);
+        // Handle errors or display an error message to the user
+      });
+  }
 
   
   

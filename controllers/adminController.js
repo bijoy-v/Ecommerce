@@ -53,7 +53,6 @@ const adminpage = (req, res, next)=> {
 
   const addCatagory = async (req,res,next)=>{
     try {
-      console.log(req.body.catagory);
       const newCatagory = await CatagoryModel.create({
         name:req.body.catagory
       })

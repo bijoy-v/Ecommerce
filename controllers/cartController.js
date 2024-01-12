@@ -3,17 +3,30 @@ const CartModel = require("../models/cartModel");
 const ProductModel = require("../models/productModel");
 const WishlistModel = require("../models/wishlistModel");
 
-const cartpage =(req, res, next)=> {
+const cartpage = async (req, res, next)=> {
     try {
-    res.render("user/userCart",{title:"about",})
+      //cart tems
+      const userId =req.session.userId;
+
+      const cartItems =await CartModel.find({
+        user:userId
+      }).populate("product").exec(); 
+      console.log(cartItems);
+    res.render("user/userCart",{title:"about",cartItems})
     } catch (error) {
       console.log(error);
     }
   }
   
-  const wishlistpage =(req, res, next)=> {
+  const wishlistpage = async (req, res, next)=> {
     try {
-    res.render("user/userWishlist",{title:"about",layout:"layouts/layout"})
+      //wiitem
+      const userId =req.session.userId;
+      const wishlistItems = await WishlistModel.find({
+        user:userId
+      }).populate("product").exec();
+      console.log(wishlistItems);
+    res.render("user/userWishlist",{title:"wishlist",wishlistItems})
     } catch (error) {
       console.log(error);
 
@@ -21,12 +34,9 @@ const cartpage =(req, res, next)=> {
   }
 
   
-  
-
 
 const addCart = async (req,res,next)=>{
 try {
-  console.log(req.session);
   const exist = await CartModel.findOne({
     $and:[
       {user:req.session.userId},
@@ -42,7 +52,6 @@ try {
       product:product._id,
       totalPrice:product.price
     })
-    console.log(cartItem);
     
 } catch (error) {
     console.log(error);
@@ -57,7 +66,6 @@ const addWishlist = async(req,res,next)=>{
         {product:req.params.productId}
     ]
   })
-    console.log(existWishList)
      
     if(existWishList){
       throw Error("Already in wishlist")
@@ -68,7 +76,6 @@ const addWishlist = async(req,res,next)=>{
         product:product._id,
         totalPrice:product.price
       })
-      console.log(wishlistItem);
 
 
   } catch (error) {
@@ -77,6 +84,26 @@ const addWishlist = async(req,res,next)=>{
   }
 }
 
+const incrementQuantity = async(req,res,)=>{
+  try {
+    const itemId = req.params.itemId;
+    const cartItem = await CartModel.findById(itemId).populate("product").exec();
+    const price = cartItem.product.price;
+    await CartModel.findByIdAndUpdate(itemId,
+      {
+        $set:{
+          $inc:{
+            quantity:1,
+            totalPrice:price
+          }
+        }
+      }
+      )
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports={
-    addCart,wishlistpage,cartpage,addWishlist
+    addCart,wishlistpage,cartpage,addWishlist,incrementQuantity
 }

@@ -38,7 +38,6 @@ const registerPage = (req, res, next) => {
 const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    console.log(req.body);
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
 
@@ -47,7 +46,6 @@ const register = async (req, res) => {
       email,
       password: hashPassword,
     });
-    console.log("user", newUser);
     res.json("Register successfully");
   } catch (error) {
     console.log(error);
@@ -56,7 +54,6 @@ const register = async (req, res) => {
 
 const loginPage = (req, res, next) => {
   try {
-    console.log(req.session);
     if(req.session.userLogin){
       res.redirect("/")
     }else{
@@ -69,7 +66,6 @@ const loginPage = (req, res, next) => {
 const login = async (req,res)=>{
   try {
     const {email,password} = req.body;
-    console.log(req.body);
     const user = await UserModel.findOne({
       email:email
     })
@@ -80,7 +76,6 @@ const login = async (req,res)=>{
     if(!verified){
       throw ("wrong password")
     }
-    console.log(user);
     req.session.username=user?.name;
     req.session.email=user?.email;
     req.session.userId=user?._id;
