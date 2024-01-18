@@ -1,5 +1,5 @@
 const express = require('express');
-const { homepage, about, productsPage, registerPage, loginPage, register, login,  sessionData, userSession} = require('../controllers/userController');
+const { homepage, productsPage, registerPage, loginPage, register, login, checkoutPage} = require('../controllers/userController');
 const { addCart, cartpage, wishlistpage, addWishlist, incrementQuantity } = require('../controllers/cartController');
 const { userLogin } = require('../middleware/isLogin');
 const userRouter = express.Router();
@@ -8,7 +8,7 @@ const userRouter = express.Router();
 
 userRouter.get('/', homepage);
 
-userRouter.get('/about', about);
+userRouter.get('/checkoutPage', checkoutPage);
 
 userRouter.get('/products', productsPage);
 

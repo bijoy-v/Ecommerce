@@ -25,7 +25,6 @@ const cartpage = async (req, res, next)=> {
       const wishlistItems = await WishlistModel.find({
         user:userId
       }).populate("product").exec();
-      console.log(wishlistItems);
     res.render("user/userWishlist",{title:"wishlist",wishlistItems})
     } catch (error) {
       console.log(error);

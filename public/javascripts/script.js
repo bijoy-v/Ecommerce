@@ -99,5 +99,16 @@ function previewImage(event) {
       });
   }
 
+
+  function calculateTotal() {
+    var productInputs = document.getElementsByClassName("productInput");
+    var totalQuantity = 1;
+
+    for (var i = 0; i < productInputs.length; i++) {
+      totalQuantity += parseInt(productInputs[i].value) || 0;
+    }
+
+    document.getElementById("totalQuantity").innerText = "Total Quantity: " + totalQuantity;
+  }
   
   

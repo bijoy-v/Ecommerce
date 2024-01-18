@@ -11,9 +11,9 @@ const homepage = (req, res, next) => {
     console.log(error);
   }
 };
-const about = (req, res, next) => {
+const checkoutPage = (req, res, next) => {
   try {
-    res.render("user/about", { title: "about" });
+    res.render("user/checkoutPage", );
   } catch (error) {
     console.log(error);
   }
@@ -90,7 +90,7 @@ const login = async (req,res)=>{
 
 module.exports = {
   homepage,
-  about,
+  checkoutPage,
   productsPage,
   registerPage,
   loginPage,
