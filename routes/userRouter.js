@@ -25,7 +25,7 @@ userRouter.post('/signup',register)
 userRouter.get('/add-cart/:productId', addCart)
 userRouter.get('/add-wishlist/:productId', addWishlist)
 
-userRouter.patch('/incrementQty/:itemId',incrementQuantity)
+userRouter.patch('/incrementQty/:productId',incrementQuantity)
 
 
 

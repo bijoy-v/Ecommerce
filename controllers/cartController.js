@@ -2,6 +2,7 @@ const { error } = require("console");
 const CartModel = require("../models/cartModel");
 const ProductModel = require("../models/productModel");
 const WishlistModel = require("../models/wishlistModel");
+const { default: mongoose } = require("mongoose");
 
 const cartpage = async (req, res, next)=> {
     try {
@@ -11,7 +12,6 @@ const cartpage = async (req, res, next)=> {
       const cartItems =await CartModel.find({
         user:userId
       }).populate("product").exec(); 
-      console.log(cartItems);
     res.render("user/userCart",{title:"about",cartItems})
     } catch (error) {
       console.log(error);
@@ -86,9 +86,10 @@ const addWishlist = async(req,res,next)=>{
 const incrementQuantity = async(req,res,)=>{
   try {
     const itemId = req.params.itemId;
-    const cartItem = await CartModel.findById(itemId).populate("product").exec();
+    console.log(itemId)
+    const cartItem = await CartModel.findById(mongoose.Types.ObjectId(itemId)).populate("product").exec();
     const price = cartItem.product.price;
-    await CartModel.findByIdAndUpdate(itemId,
+    await CartModel.findByIdAndUpdate(mongoose.Types.ObjectId(itemId),
       {
         $set:{
           $inc:{

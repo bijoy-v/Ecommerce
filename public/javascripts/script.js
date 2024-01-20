@@ -76,16 +76,20 @@ function previewImage(event) {
   }
 
   function incQty(productId){
+    console.log(productId);
     fetch("/incrementQty/"+productId, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           // Add any other headers required by your API
+          
         },
+        
       })
+      
       .then(response => {
         if (!response.ok) {
-          throw new Error('hthth');
+          throw new Error('error in script');
         }
         return response.json();
       })
