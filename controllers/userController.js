@@ -3,6 +3,7 @@ const UserModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const session = require('express-session');
 const WishlistModel = require("../models/wishlistModel");
+const checkModel = require("../models/checkModel");
 
 const homepage = (req, res, next) => {
   try {
@@ -18,6 +19,24 @@ const checkoutPage = (req, res, next) => {
     console.log(error);
   }
 };
+const checkout = async (req, res) => {
+  try {
+    const { name,address,pincode,district,state } = req.body; 
+    const newAddress = await checkModel.create({
+      name,
+      address,
+      pincode,
+      district,
+      state,
+    });
+    console.log(newAddress);
+     res.redirect("/userCart")
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 const productsPage = async (req, res, next) => {
   try {
     const products = await ProductModel.find({});
@@ -91,6 +110,7 @@ const login = async (req,res)=>{
 module.exports = {
   homepage,
   checkoutPage,
+  checkout,
   productsPage,
   registerPage,
   loginPage,

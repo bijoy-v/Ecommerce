@@ -102,8 +102,22 @@ const incrementQuantity = async(req,res,)=>{
   } catch (error) {
     console.log(error)
   }
+} 
+const deleteCart = async(req,res) => {
+  try {
+
+    const delCart = await CartModel.findById(req.params.productId);
+    const cartDelete = await CartModel.delete({
+      product:product._id
+    })
+    
+  } catch (error) {
+    console.log(error)
+  }
 }
 
+
+
 module.exports={
-    addCart,wishlistpage,cartpage,addWishlist,incrementQuantity
+    addCart,wishlistpage,cartpage,addWishlist,incrementQuantity,deleteCart
 }

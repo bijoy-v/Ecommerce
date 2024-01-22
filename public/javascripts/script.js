@@ -76,7 +76,7 @@ function previewImage(event) {
   }
 
   function incQty(productId){
-    console.log(productId);
+    console.log(productId,"productId");
     fetch("/incrementQty/"+productId, {
         method: 'PATCH',
         headers: {
@@ -103,16 +103,39 @@ function previewImage(event) {
       });
   }
 
-
-  function calculateTotal() {
-    var productInputs = document.getElementsByClassName("productInput");
-    var totalQuantity = 1;
-
-    for (var i = 0; i < productInputs.length; i++) {
-      totalQuantity += parseInt(productInputs[i].value) || 0;
-    }
-
-    document.getElementById("totalQuantity").innerText = "Total Quantity: " + totalQuantity;
+  function deleteCart(productId){
+    fetch("/deleteCartitem/"+productId, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any other headers required by your API
+        },
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // You can handle the response data or perform additional actions here
+      })
+      .catch(error => {
+        console.error('Error adding item to the cart:', error);
+        // Handle errors or display an error message to the user
+      });
   }
+
+
+  // function calculateTotal() {
+  //   var productInputs = document.getElementsByClassName("productInput");
+  //   var totalQuantity = 1;
+
+  //   for (var i = 0; i < productInputs.length; i++) {
+  //     totalQuantity += parseInt(productInputs[i].value) || 0;
+  //   }
+
+  //   document.getElementById("totalQuantity").innerText = "Total Quantity: " + totalQuantity;
+  // }
   
   

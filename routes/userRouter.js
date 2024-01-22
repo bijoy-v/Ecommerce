@@ -1,6 +1,6 @@
 const express = require('express');
-const { homepage, productsPage, registerPage, loginPage, register, login, checkoutPage} = require('../controllers/userController');
-const { addCart, cartpage, wishlistpage, addWishlist, incrementQuantity } = require('../controllers/cartController');
+const { homepage, productsPage, registerPage, loginPage, register, login, checkoutPage, checkout } = require('../controllers/userController');
+const { addCart, cartpage, wishlistpage, addWishlist, incrementQuantity, deleteCart } = require('../controllers/cartController');
 const { userLogin } = require('../middleware/isLogin');
 const userRouter = express.Router();
 
@@ -9,6 +9,7 @@ const userRouter = express.Router();
 userRouter.get('/', homepage);
 
 userRouter.get('/checkoutPage', checkoutPage);
+userRouter.post('/checkOut',checkout);
 
 userRouter.get('/products', productsPage);
 
@@ -25,7 +26,8 @@ userRouter.post('/signup',register)
 userRouter.get('/add-cart/:productId', addCart)
 userRouter.get('/add-wishlist/:productId', addWishlist)
 
-userRouter.patch('/incrementQty/:productId',incrementQuantity)
+userRouter.patch('/incrementQty/:itemId',incrementQuantity)
+userRouter.delete('/deleteCartitem/:productId',deleteCart)
 
 
 
