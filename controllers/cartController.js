@@ -107,8 +107,8 @@ const deleteCart = async(req,res) => {
   try {
 
     const delCart = await CartModel.findById(req.params.productId);
-    const cartDelete = await CartModel.delete({
-      product:product._id
+    const cartDelete = await CartModel.deleteOne({
+       _Id
     })
     
   } catch (error) {

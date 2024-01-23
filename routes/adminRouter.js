@@ -12,7 +12,7 @@ adminRouter.get('/products',adminProduct );
 
 adminRouter.get('/products/add',addProductPage);
 
-adminRouter.get('/users', adminUsers);
+adminRouter.get('/Users', adminUsers);
 
 adminRouter.get('/profile', adminProfile);
 

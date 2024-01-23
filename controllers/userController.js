@@ -21,9 +21,9 @@ const checkoutPage = (req, res, next) => {
 };
 const checkout = async (req, res) => {
   try {
-    const { name,address,pincode,district,state } = req.body; 
-    const newAddress = await checkModel.create({
-      name,
+    const { address,pincode,district,state } = req.body; 
+    const newAddress = await UserModel.create({
+      
       address,
       pincode,
       district,
