@@ -59,8 +59,78 @@ a {
 .input{
   width: 300px;
   height: 30px;
-  border: 1px solid black;
+  border: 1px solid blue;
   border-radius: 6px;
   font-size: 1.2rem;
-  
+  font-family: sans-serif;
+  margin-left: 22px;
+}
+.form{
+  margin-left :330px;;
+
+}
+.subbtn{
+  width: 150px;
+  height: 30px;
+  border-radius: 6px;
+  background-color: blue; 
+  margin-left:150px;
+  margin-top: 50px;
+  color: white;
+}
+.input1{
+  width: 300px;
+  height: 30px;
+  border: 1px solid blue;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  margin-left: 8px;
+  margin-top: 15px;
+}
+.input2{
+  width: 300px;
+  height: 30px;
+  border: 1px solid blue;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  margin-left: 9px;
+margin-top: 15px;
+}
+.input3{
+  width: 300px;
+  height: 30px;
+  border: 1px solid blue;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+margin-left: 16px;
+margin-top: 15px;
+}
+.input4{
+  width: 300px;
+  height: 30px;
+  border: 1px solid blue;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  margin-left: 28px;
+  margin-top: 15px;
+
+}
+.pay{
+  float: right;
+  margin-right:100px;
+  margin-top: -330px;
+ 
+}
+.payment{
+  width: 150px;
+  height: auto;
+  background-color: green;
+  border: 1px  black;
+  border-radius: 4px;
+  color: white;
+cursor: pointer;
 }
