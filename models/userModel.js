@@ -14,18 +14,8 @@ const userSchema = new mongoose.Schema({
   profile:{
     type:String,
   },
-address:{
-    type:String,
-},
-pincode:{
-    type:Number,
-},
-district:{
-    type:String,
-},
-state:{
-    type:String,
-}
+address:[],
+
 });
 
 const UserModel = mongoose.model('User', userSchema);

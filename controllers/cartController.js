@@ -86,29 +86,58 @@ const addWishlist = async(req,res,next)=>{
 const incrementQuantity = async(req,res,)=>{
   try {
     const itemId = req.params.itemId;
-    console.log(itemId)
-    const cartItem = await CartModel.findById(mongoose.Types.ObjectId(itemId)).populate("product").exec();
+    const cartItem = await CartModel.findById(itemId).populate("product").exec();
     const price = cartItem.product.price;
-    await CartModel.findByIdAndUpdate(mongoose.Types.ObjectId(itemId),
+    const updatedCartItem = await CartModel.findByIdAndUpdate(
+      itemId,
       {
-        $set:{
-          $inc:{
-            quantity:1,
-            totalPrice:price
-          }
+        $inc: {
+          quantity: 1,
+          totalPrice: price
         }
-      }
-      )
+      },
+      { new: true } // This option returns the modified document rather than the original
+    );
+    
   } catch (error) {
     console.log(error)
   }
 } 
+const decrementQuantity = async(req,res,)=>{
+  try {
+    const itemId = req.params.itemId;
+    console.log(itemId,"itemid");
+    const cartItem = await CartModel.findById(itemId).populate("product").exec();
+    if(cartItem.quantity==1){
+      const cartDelete = await CartModel.deleteOne({
+        _id:itemId   
+      })
+      return;
+    }
+
+    const price = cartItem.product.price;
+    const updatedCartItem = await CartModel.findByIdAndUpdate(
+      itemId,
+      {
+        $inc: {
+          quantity:-1,
+          totalPrice:-price
+        }
+      },
+      { new: true } // This option returns the modified document rather than the original
+    );
+    console.log(updatedCartItem );
+    
+  } catch (error) {
+    console.log(error)
+  }
+} 
+
 const deleteCart = async(req,res) => {
   try {
-
-    const delCart = await CartModel.findById(req.params.productId);
     const cartDelete = await CartModel.deleteOne({
-       _Id
+      _id:req.params.productId
+      
     })
     
   } catch (error) {
@@ -119,5 +148,5 @@ const deleteCart = async(req,res) => {
 
 
 module.exports={
-    addCart,wishlistpage,cartpage,addWishlist,incrementQuantity,deleteCart
+    addCart,wishlistpage,cartpage,addWishlist,incrementQuantity,deleteCart,decrementQuantity 
 }

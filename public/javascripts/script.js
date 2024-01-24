@@ -75,9 +75,36 @@ function previewImage(event) {
       });
   }
 
-  function incQty(productId){
-    console.log(productId,"productId");
-    fetch("/incrementQty/"+productId, {
+  function incQty(_id){
+    console.log(_id,"productId");
+    fetch("/incrementQty/"+_id, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any other headers required by your API
+          
+        },
+        
+      })
+      
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('error in script');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('', data);
+        // You can handle the response data or perform additional actions here
+      })
+      .catch(error => {
+        console.error('', error);
+        // Handle errors or display an error message to the user
+      });
+  }
+  function decQty(_id){
+    console.log(_id,"productId");
+    fetch("/decrementQty/"+_id, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -103,8 +130,11 @@ function previewImage(event) {
       });
   }
 
-  function deleteCart(productId){
-    fetch("/deleteCartitem/"+productId, {
+
+
+  function deleteCart(_id){
+    console.log(_id);
+    fetch("/deleteCartitem/"+_id, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

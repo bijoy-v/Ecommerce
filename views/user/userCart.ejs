@@ -42,9 +42,9 @@
                         <div class="d-flex flex-row align-items-center">
                           <div style="width:100px;">
                             <div class="row">
-                            <button class="bbtn" type="button" onclick="decQty">-</button>
-                            <h5 class="fw-normal mb-0 ">1 </h5>
-                            <button class="bbtn" type="button" onclick="incQty('<%= item.Id %>')">+</button>
+                            <button class="bbtn" type="button" onclick="decQty('<%= item._id %>')">-</button>
+                            <h5 class="fw-normal mb-0 "><%= item.quantity %> </h5>
+                            <button class="bbtn" type="button" onclick="incQty('<%= item._id %>')">+</button>
                           </div>
                           </div>
                           <div style="width: 80px;">
