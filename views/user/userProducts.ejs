@@ -9,11 +9,13 @@
             <del>&#8377;129999</del>
             <h4>&#8377;<%= product.price %></h4>
         </div>
-        <button type="button" onclick="addToCart('<%=product._id%>')">+
+        <div class=" d-flex justify-content-between pb-3">
+        <button class="cartbtn" type="button" onclick="addToCart('<%=product._id%>')">+
             Cart</button>
 
-            <button type="button" onclick="addToWishlist('<%=product._id%>')">+
+            <button class="cartbtn" type="button" onclick="addToWishlist('<%=product._id%>')">+
                 wishlist</button>
+            </div>
     </div>
     <% }) %>
 </div>
