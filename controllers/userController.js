@@ -22,8 +22,6 @@ const checkoutPage = (req, res, next) => {
 const checkout = async (req, res) => {
   try {
     const userId = req.session.userId
-    console.log(userId);
-    console.log(req.body,"req.body");
     const { address,pincode,district,state } = req.body; 
     const newAddress = {    
       address,
@@ -32,7 +30,7 @@ const checkout = async (req, res) => {
       state
     };
     console.log(newAddress);
-     res.redirect("/cart")
+    const updateAddress = await UserModel.findOneAndUpdate({_id:userId}, { $push: { address: newAddress } })
   } catch (error) {
     console.log(error);
   }
@@ -106,8 +104,20 @@ const login = async (req,res)=>{
     console.log(error);
   }
 }
+const listAddress = async(req,res,next)=>{
+  try {
+    const userId =  req.session.userId
+    const addingAddress= await UserModel.findOne({
+      _id:userId
 
+    })
+    console.log(addingAddress);
+    res.render("user/checkoutPage",{addingAddress})
+  } catch (error) {
+    console.log(error);
+  }
 
+}
 
 module.exports = {
   homepage,
@@ -118,5 +128,6 @@ module.exports = {
   loginPage,
   register,
   login,
+  listAddress
  
-};
+}
