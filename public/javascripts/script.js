@@ -145,6 +145,7 @@ function previewImage(event) {
         if (!response.ok) {
           throw new Error('Failed');
         }
+        alert("deleted")
         return response.json();
       })
       .then(data => {
@@ -180,4 +181,19 @@ function previewImage(event) {
   }
 
  
+  // ----------------------------------------------------------
+    
+    // function logoutButton(req,res,next){
+    //   try {
+    //     if(req.session.userLogin.ok){
+    //       sessionStorage.destr();
   
+    //     }else{
+    //       next()
+    //     }
+    //   } catch (error) {
+    // console.log(error);
+        
+    //   }
+      
+    // }

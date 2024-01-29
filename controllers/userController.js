@@ -12,9 +12,20 @@ const homepage = (req, res, next) => {
     console.log(error);
   }
 };
-const checkoutPage = (req, res, next) => {
+const checkoutPage = async(req, res, next) => {
+  // try {
+  //   res.render("user/checkoutPage", );
+  // } catch (error) {
+  //   console.log(error);
+  // }
   try {
-    res.render("user/checkoutPage", );
+    const userId =  req.session.userId
+    const addingAddress= await UserModel.findOne({
+      _id:userId
+
+    })
+    console.log(addingAddress.address,"6666");
+    res.render("user/checkoutPage",{addingAddress:addingAddress.address})
   } catch (error) {
     console.log(error);
   }
@@ -31,6 +42,7 @@ const checkout = async (req, res) => {
     };
     console.log(newAddress);
     const updateAddress = await UserModel.findOneAndUpdate({_id:userId}, { $push: { address: newAddress } })
+    res.json("address added")
   } catch (error) {
     console.log(error);
   }
@@ -57,6 +69,13 @@ const registerPage = (req, res, next) => {
 const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    const existUser = await UserModel.findOne({
+      email:email
+    })
+    if(existUser){
+      throw("Email already exist")
+    }
+    
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
 
@@ -65,7 +84,7 @@ const register = async (req, res) => {
       email,
       password: hashPassword,
     });
-    res.json("Register successfully");
+    res.redirect("/home");
   } catch (error) {
     console.log(error);
   }
@@ -118,6 +137,16 @@ const listAddress = async(req,res,next)=>{
   }
 
 }
+
+// const logOut = async(req,res,next)=>{
+//   try {
+//     if(req.session.OK){
+//       req.session.clear()
+//     }
+//   } catch (error) {
+    
+//   }
+// }
 
 module.exports = {
   homepage,

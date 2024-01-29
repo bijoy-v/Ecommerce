@@ -1,4 +1,6 @@
 <h2>check out</h2>
+<button type="button" class="addressbtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick="listAddress()">Add address</button>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -9,7 +11,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <form  action="/checkOut" method="post">
+            <form  action="/checkout" method="post">
                 <label for="">Address</label>   
                 <input class="input1" name="address" type="text" >
                 <br>
@@ -30,15 +32,19 @@
     </div>
   </div>
 
-  <% addingAddress.forEach((list)=>{ %>
-  <div class="showaddress">
-    <p><%= list.address %></p>
-    <p><%= list.pincode %></p>
-    <p><%= list.district %></p>
-    <p><%= list.state %></p>
-  </div>
-  <% }) %>
-  <button type="button" class="addressbtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick="listAddress()">Add address</button>
+  <% if (addingAddress && addingAddress.length > 0) { %>
+    <% addingAddress.forEach((list) => { %>
+      <div class="showaddress">
+        <p><%= list.address || 'N/A' %></p>
+        <p><%= list.pincode || 'N/A' %></p>
+        <p><%= list.district || 'N/A' %></p>
+        <p><%= list.state || 'N/A' %></p>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No addresses available.</p>
+  <% } %>
+  
 
 
 <div class="pay">
