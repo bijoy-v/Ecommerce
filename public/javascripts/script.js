@@ -76,40 +76,36 @@ function previewImage(event) {
   }
 
   function incQty(_id){
-    console.log(_id,"productId");
     fetch("/incrementQty/"+_id, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          // Add any other headers required by your API
-          
+          // Add any other headers required by your API  
         },
         
       })
       
-      .then(response => {
+      .then((response) => {
+        console.log(response.data);
+       
         if (!response.ok) {
           throw new Error('error in script');
         }
         return response.json();
       })
-      .then(data => {
-        console.log('', data);
-        // You can handle the response data or perform additional actions here
+      .then(response => {
+        console.log(response,"erfwerff")
+        document.getElementById(_id).innerHTML = response.data
       })
       .catch(error => {
         console.error('', error);
-        // Handle errors or display an error message to the user
       });
   }
   function decQty(_id){
-    console.log(_id,"productId");
     fetch("/decrementQty/"+_id, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          // Add any other headers required by your API
-          
         },
         
       })
@@ -120,8 +116,17 @@ function previewImage(event) {
         }
         return response.json();
       })
-      .then(data => {
-        console.log('', data);
+      .then(response => {
+        console.log(response,"res");
+        console.log('response', response.data);
+        if(response.data){
+          document.getElementById(_id).innerHTML = response.data.quantity
+        }else{
+          alert("product deleted")
+            window.location.href = "/cart";
+        }
+       
+
         // You can handle the response data or perform additional actions here
       })
       .catch(error => {
@@ -145,10 +150,18 @@ function previewImage(event) {
         if (!response.ok) {
           throw new Error('Failed');
         }
-        alert("deleted")
         return response.json();
       })
-      .then(data => {
+      .then(response => {
+        document.getElementById(_id).innerHTML = response.data
+
+        if(response.data){
+          document.getElementById(_id).innerHTML = response.data.quantity
+        }else{
+          alert("product deleted")
+            window.location.href = "/cart";
+        }
+
         // You can handle the response data or perform additional actions here
       })
       .catch(error => {
@@ -183,17 +196,28 @@ function previewImage(event) {
  
   // ----------------------------------------------------------
     
-    // function logoutButton(req,res,next){
-    //   try {
-    //     if(req.session.userLogin.ok){
-    //       sessionStorage.destr();
-  
-    //     }else{
-    //       next()
-    //     }
-    //   } catch (error) {
-    // console.log(error);
-        
-    //   }
-      
-    // }
+  function logoutButton(){
+    fetch("/logOut", {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any other headers required by your API
+        },
+      })
+      .then(response => {
+        console.log(response,"response");
+        if (!response.ok) {
+          throw new Error('Failed to add item to the wishlist');
+        }
+        window.location.href = "/";
+        return response.json();
+      })
+      .then(data => {
+        console.log('Item added to the wishlist:', data);
+        // You can handle the response data or perform additional actions here
+      })
+      .catch(error => {
+        console.error('Error adding item to the wishlist:', error);
+        // Handle errors or display an error message to the user
+      });
+  }

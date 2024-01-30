@@ -1,5 +1,5 @@
 const express = require('express');
-const { homepage, productsPage, registerPage, loginPage, register, login, checkoutPage, checkout, listAddress } = require('../controllers/userController');
+const { homepage, productsPage, registerPage, loginPage, register, login, checkoutPage, checkout, listAddress, logoutButton } = require('../controllers/userController');
 const { addCart, cartpage, wishlistpage, addWishlist, incrementQuantity, deleteCart, decrementQuantity } = require('../controllers/cartController');
 const { userLogin } = require('../middleware/isLogin');
 const userRouter = express.Router();
@@ -32,6 +32,9 @@ userRouter.patch('/decrementQty/:itemId',decrementQuantity)
 userRouter.delete('/deleteCartitem/:productId',deleteCart)
 
 userRouter.get('/list-address',userLogin,listAddress )
+
+userRouter.get('/logOut',logoutButton )
+
 
 
 

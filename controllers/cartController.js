@@ -87,17 +87,20 @@ const incrementQuantity = async(req,res,)=>{
   try {
     const itemId = req.params.itemId;
     const cartItem = await CartModel.findById(itemId).populate("product").exec();
+    console.log(cartItem)
     const price = cartItem.product.price;
+    const totalPrice =(cartItem.quantity)*price
     const updatedCartItem = await CartModel.findByIdAndUpdate(
       itemId,
       {
         $inc: {
           quantity: 1,
-          totalPrice: price
+          totalPrice: totalPrice
         }
       },
       { new: true } // This option returns the modified document rather than the original
     );
+    res.json({data:updatedCartItem.quantity,totalPrice})
     
   } catch (error) {
     console.log(error)
@@ -112,7 +115,7 @@ const decrementQuantity = async(req,res,)=>{
       const cartDelete = await CartModel.deleteOne({
         _id:itemId   
       })
-      return;
+      return res.json({data:false});
     }
 
     const price = cartItem.product.price;
@@ -127,6 +130,7 @@ const decrementQuantity = async(req,res,)=>{
       { new: true } // This option returns the modified document rather than the original
     );
     console.log(updatedCartItem );
+    res.json({data:updatedCartItem})
     
   } catch (error) {
     console.log(error)
@@ -139,6 +143,9 @@ const deleteCart = async(req,res) => {
       _id:req.params.productId
       
     })
+    return res.json({data:false});
+
+    res.json({data:cartDelete})
     
   } catch (error) {
     console.log(error)
