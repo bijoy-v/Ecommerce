@@ -89,7 +89,7 @@ const incrementQuantity = async(req,res,)=>{
     const cartItem = await CartModel.findById(itemId).populate("product").exec();
     console.log(cartItem)
     const price = cartItem.product.price;
-    const totalPrice =(cartItem.quantity)*price
+    const totalPrice =(cartItem.quantity)+price
     const updatedCartItem = await CartModel.findByIdAndUpdate(
       itemId,
       {

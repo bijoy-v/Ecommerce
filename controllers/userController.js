@@ -74,9 +74,9 @@ const register = async (req, res) => {
       email: email,
     });
     if (existUser) {
-      throw "Email already exist";
+      return res.status(404).json({ error: "email alredy exist" });
+      
     }
-
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
 
@@ -85,7 +85,9 @@ const register = async (req, res) => {
       email,
       password: hashPassword,
     });
-    res.redirect("/home");
+
+    return res.status(200).json({ status:true});
+
   } catch (error) {
     console.log(error);
   }
@@ -102,6 +104,29 @@ const loginPage = (req, res, next) => {
     console.log(error);
   }
 };
+// const login = async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+//     const user = await UserModel.findOne({
+//       email: email,
+//     });
+//     if (!user) {
+//       throw "user not found";
+//     }
+//     const verified = await bcrypt.compare(password, user.password);
+//     if (!verified) {
+//       throw "wrong password";
+//     }
+//     req.session.username = user?.name;
+//     req.session.email = user?.email;
+//     req.session.userId = user?._id;
+//     req.session.userLogin = true;
+//     res.redirect("/");
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -109,21 +134,28 @@ const login = async (req, res) => {
       email: email,
     });
     if (!user) {
-      throw "user not found";
+      return res.status(404).json({ error: "User not found" });
     }
+
     const verified = await bcrypt.compare(password, user.password);
     if (!verified) {
-      throw "wrong password";
+      return res.status(401).json({ error: "Wrong password" });
     }
+
     req.session.username = user?.name;
     req.session.email = user?.email;
     req.session.userId = user?._id;
     req.session.userLogin = true;
-    res.redirect("/");
+      return res.status(200).json({ status: true });
+      
+    // return res.redirect("/"); // Redirect on success
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+
 const listAddress = async (req, res, next) => {
   try {
     const userId = req.session.userId;

@@ -8,19 +8,19 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-              <form action="/signup" method="post">
+              <form id="registerForm" action="/signup" method="post">
 
                 <div class="form-outline mb-4">
-                  <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" placeholder="Your Name" required/>
+                  <input type="text" name="name" id="name" class="form-control form-control-lg" placeholder="Your Name" required/>
                   
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="email"  name="email"  id="form3Example3cg" class="form-control form-control-lg" placeholder="Email" required/>
+                  <input type="email"  name="email"  id="email" class="form-control form-control-lg" placeholder="Email" required/>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" name="password"  id="form3Example4cg" class="form-control form-control-lg" placeholder="Pasword" required/>
+                  <input type="password" name="password"  id="password" class="form-control form-control-lg" placeholder="Pasword" required/>
                 </div>
 
                 <div class="form-outline mb-4">
@@ -36,11 +36,48 @@
                     class="fw-bold text-body"><u>Login here</u></a></p>
 
               </form>
+              <script>
+              document.getElementById('registerForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
 
+
+            
+                // Make a fetch request to your backend API
+                fetch('/signup', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ name,email,password}),
+                })
+                .then(response => response.json())
+                .then(data => {
+                  console.log(data,"Data");
+                  // Check for errors in the response
+                  if (data.error) {
+                    // Display the error message to the user
+                    alert("email already exist");
+                  } else {
+                    // Redirect or handle success
+                    console.log("elsecase>>");
+                    window.location.href = '/';
+                  }
+                })
+                .catch(error => {
+                  console.log('Error:', error);
+                  // Handle other errors
+                });
+              });
+            </script>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
   </div>
 </section>

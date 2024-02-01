@@ -221,3 +221,14 @@ function previewImage(event) {
         // Handle errors or display an error message to the user
       });
   }
+
+  
+
+  function showAlert(message) {
+    notifier.notify({
+      title: 'Alert',
+      message: message,
+    });
+  }
+  
+ 

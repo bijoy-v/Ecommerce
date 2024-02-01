@@ -11,7 +11,6 @@ const userRouter = require("./routes/userRouter");
 const adminRouter = require("./routes/adminRouter");
 const session = require('express-session');
 
-
 const app = express();
 
 // view engine setup
