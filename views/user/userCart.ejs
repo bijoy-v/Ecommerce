@@ -48,7 +48,7 @@
                           </div>
                           </div>
                           <div style="width: 80px;">
-                            <h5 class="mb-0">&#8377;<%= item.totalPrice %></h5>
+                            <h5 id="<%= `${item._id}-price` %>" class="mb-0">&#8377;<%= item.totalPrice %></h5>
                           </div>
                           <button type="button" onclick="deleteCart('<%= item._id %>')"><i class="fas fa-trash-alt"></i></button>
                         </div>

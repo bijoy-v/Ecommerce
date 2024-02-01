@@ -27,7 +27,16 @@
         <a class="nav-link" href="/wishlist">Wishlist</a>
       </li>
     </ul>
-    <button type="button" id="logoutButton"   onclick="logoutButton()">logout</button>
+    <div class="btn-group">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+      </button>
+      <div class="dropdown-menu">
+        <button class="cartbtn"  type="button" id="logoutButton"   onclick="logoutButton()">Logout</button>
+        <button class="cartbtn "><a class="text-white" href="/" style="text-decoration: none">Refresh</a></button>
+        <button class="cartbtn" >profile</button>
+      </div>
+    </div>
     <form class="form-inline my-2 my-lg-0">
       <input
         class="form-control mr-sm-2"
@@ -41,6 +50,7 @@
     </form>
     <a class="ml-3" href="/login"><i class="fa-regular fa-user"></i></a>
     
-    
   </div>
+  
+  
 </nav>

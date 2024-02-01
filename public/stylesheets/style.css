@@ -142,7 +142,9 @@ cursor: pointer;
   border: 1px solid beige;
   border-radius: 5px;
   cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
 }
+
 .showaddress{
   width: 300px;
   height: auto;
@@ -161,6 +163,17 @@ cursor: pointer;
   height: auto;
   margin-right:100px;
   margin-top:-200px;
- 
-
 }
+
+
+.dropbtn{
+  width: 100px;
+  height: auto;
+  background-color: blue;
+  color: white;
+  border: 1px solid beige;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+}
+

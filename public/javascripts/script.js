@@ -85,17 +85,13 @@ function previewImage(event) {
         
       })
       
-      .then((response) => {
-        console.log(response.data);
-       
-        if (!response.ok) {
-          throw new Error('error in script');
-        }
+      .then((response) => {  
         return response.json();
       })
       .then(response => {
         console.log(response,"erfwerff")
         document.getElementById(_id).innerHTML = response.data
+        document.getElementById(`${_id}-price`).innerHTML = response.price
       })
       .catch(error => {
         console.error('', error);
@@ -120,7 +116,10 @@ function previewImage(event) {
         console.log(response,"res");
         console.log('response', response.data);
         if(response.data){
-          document.getElementById(_id).innerHTML = response.data.quantity
+          document.getElementById(_id).innerHTML = response.data
+        document.getElementById(`${_id}-price`).innerHTML = response.price
+
+
         }else{
           alert("product deleted")
             window.location.href = "/cart";

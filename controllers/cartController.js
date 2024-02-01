@@ -87,20 +87,19 @@ const incrementQuantity = async(req,res,)=>{
   try {
     const itemId = req.params.itemId;
     const cartItem = await CartModel.findById(itemId).populate("product").exec();
-    console.log(cartItem)
     const price = cartItem.product.price;
-    const totalPrice =(cartItem.quantity)+price
     const updatedCartItem = await CartModel.findByIdAndUpdate(
       itemId,
       {
         $inc: {
           quantity: 1,
-          totalPrice: totalPrice
+          totalPrice: +price
         }
       },
       { new: true } // This option returns the modified document rather than the original
     );
-    res.json({data:updatedCartItem.quantity,totalPrice})
+    console.log(updatedCartItem,"updatedCartItem");
+   return res.json({data:updatedCartItem.quantity,price:updatedCartItem.totalPrice})
     
   } catch (error) {
     console.log(error)
@@ -130,7 +129,7 @@ const decrementQuantity = async(req,res,)=>{
       { new: true } // This option returns the modified document rather than the original
     );
     console.log(updatedCartItem );
-    res.json({data:updatedCartItem})
+   return  res.json({data:updatedCartItem.quantity,price:updatedCartItem.totalPrice})
     
   } catch (error) {
     console.log(error)
