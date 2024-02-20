@@ -223,11 +223,36 @@ function previewImage(event) {
 
   
 
-  function showAlert(message) {
-    notifier.notify({
-      title: 'Alert',
-      message: message,
-    });
+  function deleteProduct(_id){
+    console.log(req.params.productId);
+    fetch("/deleteProduct/"+req.params.productId, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any other headers required by your API
+        },
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed');
+        }
+        return response.json();
+      })
+      .then(response => {
+        document.getElementById(_id).innerHTML = response.data
+
+        if(response.data){
+          document.getElementById(_id).innerHTML = response.data
+        }else{
+          alert("product deleted")
+            window.location.href = "/";
+        }
+      })
+        // You can handle the response data or perform additional actions here
+      
+      .catch(error => {
+        console.error('Error adding item to the cart:', error);
+        // Handle errors or display an error message to the user
+      });
   }
-  
  

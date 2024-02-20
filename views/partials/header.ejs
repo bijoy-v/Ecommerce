@@ -27,29 +27,32 @@
         <a class="nav-link" href="/wishlist">Wishlist</a>
       </li>
     </ul>
-    <div class="btn-group">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        
-      </button>
-      <div class="dropdown-menu">
-        <button class="cartbtn"  type="button" id="logoutButton"   onclick="logoutButton()">Logout</button>
-        <button class="cartbtn "><a class="text-white" href="/" style="text-decoration: none">Refresh</a></button>
-        <button class="cartbtn" >profile</button>
-      </div>
-    </div>
-    <form class="form-inline my-2 my-lg-0">
+    
+    
+    <form class="form-inline my-2 my-lg-0 me-5">
       <input
         class="form-control mr-sm-2"
         type="search"
         placeholder="Search"
         aria-label="Search"
       />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+      <button class="btn btn-outline-success my-2 my-sm-0  " type="submit">
         Search
       </button>
     </form>
-    <a class="ml-3" href="/login"><i class="fa-regular fa-user"></i></a>
-    
+      <div class="btn-group me-5 pl-5 ">
+        <button class="btn  " type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa-regular fa-user"></i>
+        </button>
+        <div class="dropdown-menu">
+          <button class="cartbtn"  type="button" id="logoutButton"   onclick="logoutButton()">Logout</button>
+          <button class="cartbtn "><a class="text-white" href="/" style="text-decoration: none">Refresh</a></button>
+          <button class="cartbtn" ><a class="text-white" href="/admin/profile" style="text-decoration: none">Profile</a></button>
+        </div>
+      </div>
+
+      <div class="me-5"></div>
+
   </div>
   
   

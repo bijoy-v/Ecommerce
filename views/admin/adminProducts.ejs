@@ -19,7 +19,7 @@
           <td><%= product.price %></td>
           <td>
             <a class="btn btn-primary" href="" role="button">Edit</a>
-            <a class="btn btn-primary" href="" role="button">Delete</a>
+            <a class="btn btn-primary"name="deletebtn " id="deletebtn"   href="" role="button" onclick="deleteProduct('<%= product.product %>')">Delete</a>
           </td>
         </tr>
       <% })  %>

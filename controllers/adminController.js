@@ -62,10 +62,25 @@ const adminpage = (req, res, next)=> {
     }
   }
 
+  const deleteProduct = async(req,res) => {
+    try {
+      const cartDelete = await ProductModel.deleteOne({
+        _id:req.params.productId
+        
+      })
+      return res.json({data:false});
+  
+      res.json({data:cartDelete})
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
 
 
 
   module.exports = {
-    adminpage,adminProduct,adminUsers,adminProfile,adminOrders,catagoryPage,addCatagory
+    adminpage,adminProduct,adminUsers,adminProfile,adminOrders,catagoryPage,addCatagory,deleteProduct
   }

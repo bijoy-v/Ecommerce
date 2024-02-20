@@ -142,7 +142,8 @@ cursor: pointer;
   border: 1px solid beige;
   border-radius: 5px;
   cursor: pointer;
-  font-family: 'Courier New', Courier, monospace;
+  font-family:monospace;
+  font-size: 1rem
 }
 
 .showaddress{
@@ -174,6 +175,5 @@ cursor: pointer;
   border: 1px solid beige;
   border-radius: 5px;
   cursor: pointer;
-  font-family: 'Courier New', Courier, monospace;
+  
 }
-
